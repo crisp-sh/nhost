@@ -93,7 +93,7 @@ services:
             traefik.http.routers.auth.rule: Host(`${AUTH_URL}`)
             traefik.http.routers.auth.service: auth
             traefik.http.routers.auth.tls: "false"
-            traefik.http.services.auth.loadbalancer.server.port: "4000"
+            traefik.http.services.auth.loadbalancer.server.port: 4000
         networks:
             - dokploy-networks
                 
@@ -166,8 +166,8 @@ services:
             traefik.http.routers.migrate.rule: Host(`${GRAPHQL_URL}`) && PathPrefix(`/apis/`)
             traefik.http.routers.migrate.service: migrate
             traefik.http.routers.migrate.tls: "false"
-            traefik.http.services.console.loadbalancer.server.port: "9695"
-            traefik.http.services.migrate.loadbalancer.server.port: "80"
+            traefik.http.services.console.loadbalancer.server.port: 9695
+            traefik.http.services.migrate.loadbalancer.server.port: 80
         networks:
             - dokploy-networks
         restart: always
@@ -205,7 +205,7 @@ services:
             traefik.http.routers.dashboard.rule: Host(`${DASHBOARD_URL}`)
             traefik.http.routers.dashboard.service: dashboard
             traefik.http.routers.dashboard.tls: "false"
-            traefik.http.services.dashboard.loadbalancer.server.port: "3000"
+            traefik.http.services.dashboard.loadbalancer.server.port: 3000
         networks:
             - dokploy-networks
         restart: ""
@@ -245,7 +245,7 @@ services:
             traefik.http.routers.functions.rule: Host(`${FUNCTIONS_URL}`) && PathPrefix(`/v1`)
             traefik.http.routers.functions.service: functions
             traefik.http.routers.functions.tls: "false"
-            traefik.http.services.functions.loadbalancer.server.port: "3000"
+            traefik.http.services.functions.loadbalancer.server.port: 3000
         networks:
             - dokploy-networks
         restart: always
@@ -318,8 +318,8 @@ services:
             traefik.http.routers.hasura.rule: Host(`${GRAPHQL_URL}`) && ( PathPrefix(`/v1`) || PathPrefix(`/v2`) || PathPrefix(`/api/`) || PathPrefix(`/console/assets`) )
             traefik.http.routers.hasura.service: hasura
             traefik.http.routers.hasura.tls: "false"
-            traefik.http.services.graphql.loadbalancer.server.port: "8080"
-            traefik.http.services.hasura.loadbalancer.server.port: "8080"
+            traefik.http.services.graphql.loadbalancer.server.port: 8080
+            traefik.http.services.hasura.loadbalancer.server.port: 8080
         networks:
             - dokploy-networks
         restart: always
@@ -346,7 +346,7 @@ services:
             traefik.http.routers.mailhog.rule: Host(`${MAILHOG_URL}`)
             traefik.http.routers.mailhog.service: mailhog
             traefik.http.routers.mailhog.tls: "false"
-            traefik.http.services.mailhog.loadbalancer.server.port: "8025"
+            traefik.http.services.mailhog.loadbalancer.server.port: 8025
         restart: always
         volumes:
             - type: volume
@@ -458,7 +458,7 @@ services:
             traefik.http.routers.storage.rule: Host(`${STORAGE_URL}`) && PathPrefix(`/v1`)
             traefik.http.routers.storage.service: storage
             traefik.http.routers.storage.tls: "false"
-            traefik.http.services.storage.loadbalancer.server.port: "5000"
+            traefik.http.services.storage.loadbalancer.server.port: 5000
         networks:
             - dokploy-networks
         restart: always
@@ -483,7 +483,7 @@ services:
         ports:
             - mode: ingress
               target: 80
-              published: "80"
+              published: 80
               protocol: tcp
         restart: always
         volumes:
