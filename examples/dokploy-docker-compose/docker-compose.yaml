@@ -500,3 +500,6 @@ volumes:
     pgdata: {}
     mailhog: {}
     minio: {}
+networks:
+  dokploy-network:
+    external: true
