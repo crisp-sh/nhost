@@ -2,10 +2,8 @@ services:
     auth:
         image: nhost/hasura-auth:0.37.1
         depends_on:
-            graphql:
-                condition: service_healthy
-            postgres:
-                condition: service_healthy
+            - graphql
+            - postgres
         environment:
             AUTH_ACCESS_CONTROL_ALLOWED_EMAIL_DOMAINS: ""
             AUTH_ACCESS_CONTROL_ALLOWED_EMAILS: ""
@@ -101,8 +99,7 @@ services:
     console:
         image: nhost/graphql-engine:v2.36.9-ce.cli-migrations-v3
         depends_on:
-            graphql:
-                condition: service_healthy
+            - graphql
         entrypoint:
             - hasura-cli
         command:
@@ -266,8 +263,7 @@ services:
     graphql:
         image: nhost/graphql-engine:v2.36.9-ce
         depends_on:
-            postgres:
-                condition: service_healthy
+            - postgres
         environment:
             GRAPHITE_WEBHOOK_SECRET: ""
             HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS: "true"
@@ -423,12 +419,9 @@ services:
     storage:
         image: nhost/hasura-storage:0.7.1
         depends_on:
-            graphql:
-                condition: service_healthy
-            minio:
-                condition: service_started
-            postgres:
-                condition: service_healthy
+            - graphql
+            - minio
+            - postgres
         command:
             - serve
         environment:
